@@ -1,22 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import Form from './ParentComponent';
+import Table from './ChildComponent';
+import { useState } from 'react';
 
 function App() {
+
+  const [data, setData] = useState([])
+
+  function onDataChange(newProduct) {
+    setData([...data, newProduct])
+  }
+
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+          <Form onDataChange={onDataChange} />
+          <Table data={data} />
       </header>
     </div>
   );
